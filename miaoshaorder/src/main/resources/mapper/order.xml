@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.order.dao.OrderDao">
+   <insert id="saveOrder" parameterType="order">
+       INSERT INTO `order` (order_num,user_id,goods_id,seckill_id,receive_phone)
+           VALUE
+           (#{orderNum},#{userId},#{goodsId},#{seckillId},#{receivePhone})
+   </insert>
+    <select id="getOrderInfo"  resultType="map">
+        SELECT * FROM `order` o inner JOIN seckill s ON o.seckill_id = s.seckill_id
+        INNER JOIN goods g ON o.goods_id = g.goods_id
+    </select>
+</mapper>
