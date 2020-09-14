@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.miaosha.dao.GoodsDao">
+    <select id="getGoodsList" resultType="com.miaosha.entity.Goods">
+        select * from goods
+    </select>
+
+    <insert id = "insertGoods" parameterType="com.miaosha.entity.Goods" useGeneratedKeys="true" keyProperty="goodsId">
+        insert into goods(
+        goods_name,goods_price)
+        values(
+        #{goodsName},#{goodsPrice})
+    </insert>
+    <select id="getGoodsById"  resultType="goods">
+        SELECT * FROM goods where goods_id = #{goodsId}
+    </select>
+</mapper>

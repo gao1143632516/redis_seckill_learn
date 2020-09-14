@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.miaosha.dao.SeckillDao">
+    <select id="getSeckill" resultType="com.miaosha.entity.Seckill">
+        select * from seckill where status=0 AND now() BETWEEN start_date AND end_date
+    </select>
+    <update id="updateSeckillStatus">
+        UPDATE seckill SET status=1 where seckill_id = #{seckillId}
+    </update>
+    <select id="getSeckillById" resultType="seckill">
+        SELECT * FROM seckill where seckill_id = #{seckillId} AND now() BETWEEN start_date AND end_date
+    </select>
+
+</mapper>
